@@ -1,8 +1,7 @@
 # toy-robot
 An application to model a robot moving around on a table.
 
-I got the idea to do this project for myself after I found:
-Github user fredwu's toy-robot-elixir repository.
+I got the idea to do this project for myself after I found Github user fredwu's toy-robot-elixir repository.
 
 
 +   The application simulates a robot moving around on a tabletop of a given size.
