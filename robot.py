@@ -4,9 +4,16 @@ This program will emulate a robot moving around on a square table.
 '''
 
 def main():
-    rob = Robot()
-    print("test")
-    print(rob)
+    rob = Robot(1,1,1)
+    print(rob.report())
+    rob.turn_left()
+    print(rob.report())
+    rob.move()
+    rob.move()
+    print(rob.report())
+    rob.place(2,2,2)
+    print(rob.report())
+    
 
 
 class Robot(object):
@@ -20,7 +27,9 @@ class Robot(object):
         self.f = f #0 = north, 1 = east, 2 = south, 3 = west
 
     def __str__(self):
-        return "My position is ({0},{1}) and I am facing {2}".format(self.x,self.y,self.get_facing())
+        return "My position is ({0},{1}) and I am facing {2}.".format(self.x,
+                                                                      self.y,
+                                                                      self.get_facing())
 
     def get_facing(self):
         if self.f == 0:
@@ -33,17 +42,30 @@ class Robot(object):
             return "West"
 
     def turn_left(self):
-        if self.f == 0:
-            self.f = 3
-        else:
-            self.f -= 1
+        self.f -= 1
+        self.f %= 4
 
     def turn_right(self):
-        if self.f == 3:
-            self.f = 0
-        else:
-            self.f += 1
+        self.f += 1
+        self.f %= 4
 
+    def report(self):
+        return str(self)
+
+    def move(self):
+        if self.f == 0:
+            self.y += 1
+        elif self.f == 2:
+            self.y -= 1
+        elif self.f == 1:
+            self.x += 1
+        else:
+            self.x -= 1
+
+    def place(self, x, y, f):
+        self.x = x
+        self.y = y
+        self.f = f
 
 
 if __name__ == '__main__':
