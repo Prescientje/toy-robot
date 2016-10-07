@@ -7,11 +7,17 @@ def doLine(line):
 def main():
     script, f_name = argv
     print("Reading from %s" % f_name)
-    rob = Robot(1,1,1)
+    rob = Robot(1,1,0)
     print(rob.report())
     rob.turn_left()
     print(rob.report())
     rob.move()
+    rob.move()
+    print(rob.report())
+    rob.move()
+    print(rob.report())
+    rob.move()
+    print(rob.report())
     rob.move()
     print(rob.report())
     rob.place(2,2,2)

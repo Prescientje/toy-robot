@@ -3,17 +3,6 @@ This program will emulate a robot moving around on a square table.
 
 '''
 
-def main():
-    rob = Robot(1,1,1)
-    print(rob.report())
-    rob.turn_left()
-    print(rob.report())
-    rob.move()
-    rob.move()
-    print(rob.report())
-    rob.place(2,2,2)
-    print(rob.report())
-    
 
 
 class Robot(object):
@@ -21,10 +10,12 @@ class Robot(object):
     Represents a robot that can move around on a table.
     '''
 
-    def __init__(self, x=0,y=0,f=0):
+    def __init__(self, x=0,y=0,f=0,maxX=5,maxY=5):
         self.x = x 
         self.y = y 
         self.f = f #0 = north, 1 = east, 2 = south, 3 = west
+        self.maxX = maxX-1
+        self.maxY = maxY-1
 
     def __str__(self):
         return "My position is ({0},{1}) and I am facing {2}.".format(self.x,
@@ -53,13 +44,13 @@ class Robot(object):
         return str(self)
 
     def move(self):
-        if self.f == 0:
+        if self.f == 0 and self.y < self.maxY:
             self.y += 1
-        elif self.f == 2:
+        elif self.f == 2 and self.y > 0:
             self.y -= 1
-        elif self.f == 1:
+        elif self.f == 1 and self.x < self.maxX:
             self.x += 1
-        else:
+        elif self.f == 3 and self.x > 0:
             self.x -= 1
 
     def place(self, x, y, f):
@@ -67,6 +58,3 @@ class Robot(object):
         self.y = y
         self.f = f
 
-
-if __name__ == '__main__':
-    main()
