@@ -8,11 +8,13 @@ This program will emulate a robot moving around on a square table.
 class Robot(object):
     '''
     Represents a robot that can move around on a table.
+    The table is default 5x5, so the southwest corner is (0,0)
+    and the northeast corner is (4,4).
     '''
 
     def __init__(self, x=0,y=0,f=0,maxX=5,maxY=5):
-        self.x = x 
-        self.y = y 
+        self.x = x-1
+        self.y = y-1
         self.f = f #0 = north, 1 = east, 2 = south, 3 = west
         self.maxX = maxX-1
         self.maxY = maxY-1
@@ -54,7 +56,7 @@ class Robot(object):
             self.x -= 1
 
     def place(self, x, y, f):
-        self.x = x
-        self.y = y
+        self.x = x-1
+        self.y = y-1
         self.f = f
 
