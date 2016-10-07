@@ -23,6 +23,10 @@ def doLine(line, rob):
 
 
 def main():
+    if len(argv) == 1:
+        print("You need to call this file with a txt file of instructions for the robot to follow.")
+        return
+
     script, f_name = argv
     s = "Reading from %s:" % f_name
     print(s)
